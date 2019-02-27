@@ -10,6 +10,7 @@ public class CadastroContatoHelper {
     private EditText txtTelefone;
     private EditText txtEmail;
     private EditText txtLinkedin;
+    private Contato contato;
 
     public CadastroContatoHelper(CadastroContatos activity){
         txtNome = activity.findViewById(R.id.txt_nome);
@@ -17,10 +18,10 @@ public class CadastroContatoHelper {
         txtTelefone = activity.findViewById(R.id.txt_telefone);
         txtEmail = activity.findViewById(R.id.txt_email);
         txtLinkedin = activity.findViewById(R.id.txt_linkedin);
+        contato = new Contato();
     }
 
     public Contato getContato(){
-        Contato contato = new Contato();
         contato.setNome(txtNome.getText().toString());
         contato.setEndereco(txtEndereco.getText().toString());
         contato.setTelefone(txtTelefone.getText().toString());
@@ -36,6 +37,7 @@ public class CadastroContatoHelper {
         txtTelefone.setText(contato.getTelefone().toString());
         txtEmail.setText(contato.getEmail().toString());
         txtLinkedin.setText(contato.getLinkedin().toString());
+        this.contato = contato;
     }
 
 

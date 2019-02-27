@@ -47,7 +47,7 @@ public class CadastroContatos extends AppCompatActivity {
                 Contato contato = helper.getContato();
                 ContatoDAO dao = new ContatoDAO(this);
 
-                if(item.getItemId() == 0){
+                if(contato.getId() == 0){
                     dao.salvar(contato);
                     dao.close();
                     Toast.makeText(this, contato.getNome() + " gravado com sucesso!", Toast.LENGTH_SHORT).show();
@@ -65,6 +65,7 @@ public class CadastroContatos extends AppCompatActivity {
                 dao = new ContatoDAO(this);
                 dao.excluir(contato);
                 dao.close();
+                finish();
 
                 Toast.makeText(this, contato.getNome() + " excluído com sucesso!", Toast.LENGTH_SHORT).show();
                 break;
