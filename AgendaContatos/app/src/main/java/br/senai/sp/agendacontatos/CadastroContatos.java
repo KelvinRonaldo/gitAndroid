@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import br.senai.sp.dao.ContatoDAO;
 import br.senai.sp.modelo.Contato;
+import br.senai.sp.utils.CaixaDeDialogo;
 
 public class CadastroContatos extends AppCompatActivity {
     private CadastroContatoHelper helper;
@@ -28,7 +29,7 @@ public class CadastroContatos extends AppCompatActivity {
         Contato contato = (Contato) intent.getSerializableExtra("contato");
 
         if(contato == null){
-            
+
         }else{
             helper.preencherCampos(contato);
         }
@@ -68,21 +69,28 @@ public class CadastroContatos extends AppCompatActivity {
                 final Contato contato = helper.getContato();
                 final ContatoDAO dao = new ContatoDAO(this);
 
-                AlertDialog.Builder confirmarExclusao = new AlertDialog.Builder(this);
-                confirmarExclusao.setTitle("EXCLUIR CONTATO");
-                confirmarExclusao.setMessage("Tem certeza de que deseja excluir " + contato.getNome() + "?");
-                confirmarExclusao.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dao.excluir(contato);
-                        Toast.makeText(CadastroContatos.this, contato.getNome() + "  foi excluído(a)!", Toast.LENGTH_SHORT).show();
-                        dao.close();
-                        finish();
-                    }
-                });
-                confirmarExclusao.setNegativeButton("Não", null);
-                confirmarExclusao.create().show();
+                if(contato.getId() == 0){
+                    Toast.makeText(CadastroContatos.this, "Este contato não está cadastrado. Não poder ser excluído!", Toast.LENGTH_SHORT).show();
+                }else{
+                    AlertDialog.Builder confirmarExclusao = new AlertDialog.Builder(this);
+                    confirmarExclusao.setTitle("EXCLUIR CONTATO");
+                    confirmarExclusao.setMessage("Tem certeza de que deseja excluir " + contato.getNome() + "?");
+                    confirmarExclusao.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dao.excluir(contato);
+                            Toast.makeText(CadastroContatos.this, contato.getNome() + "  foi excluído(a)!", Toast.LENGTH_SHORT).show();
+                            dao.close();
+                            finish();
+                        }
+                    });
+                    confirmarExclusao.setNegativeButton("Não", null);
+                    confirmarExclusao.create().show();
 
+//                    CaixaDeDialogo d = new CaixaDeDialogo();
+//                    d.excluirContato(contato, dao, this);
+//                    finish();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

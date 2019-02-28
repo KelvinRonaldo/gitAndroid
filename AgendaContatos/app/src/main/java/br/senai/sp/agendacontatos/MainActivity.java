@@ -1,5 +1,6 @@
 package br.senai.sp.agendacontatos;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import br.senai.sp.dao.ContatoDAO;
 import br.senai.sp.modelo.Contato;
+import br.senai.sp.utils.CaixaDeDialogo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,11 +92,14 @@ public class MainActivity extends AppCompatActivity {
                 dao.excluir(contato);
                 Toast.makeText(MainActivity.this, contato.getNome() + "  foi excluído(a)!", Toast.LENGTH_SHORT).show();
                 dao.close();
-                carregarLista();
+                finish();
             }
         });
         confirmarExclusao.setNegativeButton("Não", null);
         confirmarExclusao.create().show();
+
+//        CaixaDeDialogo d = new CaixaDeDialogo();
+//        d.excluirContato(contato, dao, this);
 
         return super.onContextItemSelected(item);
     }

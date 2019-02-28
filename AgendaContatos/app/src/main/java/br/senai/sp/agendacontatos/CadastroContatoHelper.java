@@ -97,6 +97,9 @@ public class CadastroContatoHelper {
         }else{
             layoutLinkedin.setErrorEnabled(false);
         }
+//        if(txtNome.getText().toString().){
+//
+//        }
 
 
         return validado;
