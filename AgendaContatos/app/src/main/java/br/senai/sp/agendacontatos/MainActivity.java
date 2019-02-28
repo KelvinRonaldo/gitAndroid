@@ -1,6 +1,8 @@
 package br.senai.sp.agendacontatos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -76,13 +78,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
-        ContatoDAO dao = new ContatoDAO(MainActivity.this);
+        final Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
+        final ContatoDAO dao = new ContatoDAO(MainActivity.this);
 
-        dao.excluir(contato);
-        Toast.makeText(this, contato.getNome() + " excluído com sucesso!", Toast.LENGTH_SHORT).show();
-        dao.close();
-        carregarLista();
+        AlertDialog.Builder confirmarExclusao = new AlertDialog.Builder(this);
+        confirmarExclusao.setTitle("EXCLUIR CONTATO");
+        confirmarExclusao.setMessage("Tem certeza de que deseja excluir " + contato.getNome() + "?");
+        confirmarExclusao.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dao.excluir(contato);
+                Toast.makeText(MainActivity.this, contato.getNome() + "  foi excluído(a)!", Toast.LENGTH_SHORT).show();
+                dao.close();
+                carregarLista();
+            }
+        });
+        confirmarExclusao.setNegativeButton("Não", null);
+        confirmarExclusao.create().show();
 
         return super.onContextItemSelected(item);
     }
