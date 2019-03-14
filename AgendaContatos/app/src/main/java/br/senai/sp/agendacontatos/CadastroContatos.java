@@ -23,7 +23,13 @@ public class CadastroContatos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_contatos);
-        helper = new CadastroContatoHelper(this);
+
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+            helper = new CadastroContatoHelper(this);
 
         Intent intent = getIntent();
         Contato contato = (Contato) intent.getSerializableExtra("contato");
@@ -49,7 +55,7 @@ public class CadastroContatos extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.item_pronto:
-                if(helper.validar()){
+                if(helper.validarVazio(this) && helper.validarCaracter(this)){
                     Contato contato = helper.getContato();
                     ContatoDAO dao = new ContatoDAO(this);
 
@@ -68,6 +74,7 @@ public class CadastroContatos extends AppCompatActivity {
             case R.id.item_excluir:
                 final Contato contato = helper.getContato();
                 final ContatoDAO dao = new ContatoDAO(this);
+
 
                 if(contato.getId() == 0){
                     Toast.makeText(CadastroContatos.this, "Este contato não está cadastrado. Não poder ser excluído!", Toast.LENGTH_SHORT).show();

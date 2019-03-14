@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 dao.excluir(contato);
                 Toast.makeText(MainActivity.this, contato.getNome() + "  foi excluído(a)!", Toast.LENGTH_SHORT).show();
                 dao.close();
-                finish();
+                carregarLista();
             }
         });
         confirmarExclusao.setNegativeButton("Não", null);
