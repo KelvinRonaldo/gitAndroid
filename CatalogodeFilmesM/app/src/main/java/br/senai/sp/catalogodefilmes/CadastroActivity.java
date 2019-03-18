@@ -53,13 +53,14 @@ public class CadastroActivity extends AppCompatActivity {
 
                 if(filme.getId() == 0){
                     dao.salvar(filme);
+                    Toast.makeText(this, filme.getTitulo() +" Gravado com Sucesso!", Toast.LENGTH_LONG).show();
                 }else{
                     dao.atualizar(filme);
+                    Toast.makeText(this, filme.getTitulo() +" Atualizado com Sucesso!", Toast.LENGTH_LONG).show();
                 }
 
                 dao.close();
 
-                Toast.makeText(this, filme.getTitulo() +" Gravado com Sucesso!", Toast.LENGTH_LONG).show();
                 finish();
 
                 break;

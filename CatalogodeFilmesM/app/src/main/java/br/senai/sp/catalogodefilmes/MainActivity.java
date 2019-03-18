@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.List;
 
+import br.senai.sp.adapter.FilmesAdapter;
 import br.senai.sp.dao.FilmeDAO;
 import br.senai.sp.modelo.Filme;
 
@@ -122,13 +123,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void carregarLista(){
         FilmeDAO dao = new FilmeDAO(this);
+//        ↓MATRIZ DE FILMES QUE SERAO EXIBIDOS NO LISTVIEW
         List<Filme> filmes = dao.getFilmes();
         dao.close();
 
         // ****** Criar um adapter que carrega o vetor na list view
-        ArrayAdapter<Filme> listaFilmesAdapter =  new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, filmes);
+//        ArrayAdapter<Filme> listaFilmesAdapter =  new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, filmes);
 
-        listaFilmes.setAdapter(listaFilmesAdapter);
+        FilmesAdapter adapter = new FilmesAdapter(this, filmes);
+
+        listaFilmes.setAdapter(adapter);
+
+//        Injetamos o adapter no objeto lisview
+//        listaFilmes.setAdapter(listaFilmesAdapter);
     }
 
     @Override

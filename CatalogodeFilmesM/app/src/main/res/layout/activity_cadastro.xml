@@ -51,5 +51,6 @@
         android:numStars="5"
         android:max="100"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        />
 </LinearLayout>
