@@ -1,5 +1,6 @@
 package br.senai.sp.catalogodefilmes;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 

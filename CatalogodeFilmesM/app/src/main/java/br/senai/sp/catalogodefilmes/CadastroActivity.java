@@ -1,23 +1,59 @@
 package br.senai.sp.catalogodefilmes;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import br.senai.sp.dao.FilmeDAO;
 import br.senai.sp.modelo.Filme;
 
 public class CadastroActivity extends AppCompatActivity {
     private CadastroFilmeHelper helper;
+    private Button btnCamera;
+    private Button btnGaleria;
+    private ImageView imgFilme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+
+        btnCamera = findViewById(R.id.btn_camera);
+        btnGaleria = findViewById(R.id.btn_galeria);
+        imgFilme = findViewById(R.id.img_filme);
+
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent
+            }
+        });
+
+        btnGaleria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentGaleria = new Intent(Intent.ACTION_GET_CONTENT);
+                intentGaleria.setType("image/*");
+                startActivityForResult(intentGaleria, 1);
+            }
+        });
+
+
+
         helper = new CadastroFilmeHelper(this);
 
 //        pegando a intent
@@ -30,6 +66,22 @@ public class CadastroActivity extends AppCompatActivity {
         else{
             helper.preencherFormulario(filme);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        InputStream inputStream = null;
+        try {
+
+            inputStream = getContentResolver().openInputStream(data.getData());
+            Bitmap bitmapFactory = BitmapFactory.decodeStream(inputStream);
+            imgFilme.setImageBitmap(bitmapFactory);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

@@ -27,13 +27,18 @@
                 android:layout_height="wrap_content"
                 android:text="Rocky: Um Lutador"
                 android:textSize="22sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:lines="1"
+                />
             <TextView
                 android:id="@+id/txt_diretor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="John Avildsen"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:lines="1"/>
 
         </LinearLayout>
 
