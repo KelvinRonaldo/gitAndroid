@@ -3,8 +3,10 @@ package br.senai.sp.agendacontatos;
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import br.senai.sp.conversor.Imagem;
 import br.senai.sp.modelo.Contato;
 import br.senai.sp.utils.ValidacaoLetraNum;
 
@@ -14,6 +16,7 @@ public class CadastroContatoHelper {
     private EditText txtTelefone;
     private EditText txtEmail;
     private EditText txtLinkedin;
+    private ImageView imgContato;
 
     private TextInputLayout layoutNome;
     private TextInputLayout layoutEndereco;
@@ -29,6 +32,7 @@ public class CadastroContatoHelper {
         txtTelefone = activity.findViewById(R.id.txt_telefone);
         txtEmail = activity.findViewById(R.id.txt_email);
         txtLinkedin = activity.findViewById(R.id.txt_linkedin);
+        imgContato = activity.findViewById(R.id.img_lista_contato);
 
         layoutNome =  activity.findViewById(R.id.layout_txt_nome);
         layoutEndereco =  activity.findViewById(R.id.layout_txt_endereco);
@@ -45,6 +49,7 @@ public class CadastroContatoHelper {
         contato.setTelefone(txtTelefone.getText().toString());
         contato.setEmail(txtEmail.getText().toString());
         contato.setLinkedin(txtLinkedin.getText().toString());
+        contato.setFotoContato(Imagem.imageViewToArray(imgContato));
 
         return contato;
     }
@@ -55,6 +60,7 @@ public class CadastroContatoHelper {
         txtTelefone.setText(contato.getTelefone());
         txtEmail.setText(contato.getEmail());
         txtLinkedin.setText(contato.getLinkedin());
+        imgContato.setImageBitmap(Imagem.arrayToBitmap(contato.getFotoContato()));
         this.contato = contato;
     }
 

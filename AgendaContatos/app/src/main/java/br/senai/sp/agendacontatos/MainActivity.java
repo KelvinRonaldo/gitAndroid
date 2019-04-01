@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import br.senai.sp.adapter.ContatosAdapter;
 import br.senai.sp.dao.ContatoDAO;
 import br.senai.sp.modelo.Contato;
 import br.senai.sp.utils.CaixaDeDialogo;
@@ -115,8 +116,10 @@ public class MainActivity extends AppCompatActivity {
         ContatoDAO dao = new ContatoDAO(this);
         List<Contato> contatos = dao.getContatos();
 
-        ArrayAdapter<Contato> listaContatosAdapter = new ArrayAdapter<Contato>(this, android.R.layout.simple_list_item_1, contatos);
+//        ArrayAdapter<Contato> listaContatosAdapter = new ArrayAdapter<Contato>(this, android.R.layout.simple_list_item_1, contatos);
 
-        listaContatos.setAdapter(listaContatosAdapter);
+        ContatosAdapter adapter = new ContatosAdapter(this, contatos);
+
+        listaContatos.setAdapter(adapter);
     }
 }

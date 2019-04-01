@@ -14,8 +14,9 @@ public class CaixaDeDialogo {
 //    public CaixaDeDialogo(Contato contato, ContatoDAO dao, MainActivity mainActivity) {
 //
 //    }
+    boolean confirm = false;
+    public boolean excluirContato(final Contato contato, final ContatoDAO dao, final Context activity){
 
-    public void excluirContato(final Contato contato, final ContatoDAO dao, final Context activity){
         AlertDialog.Builder confirmarExclusao = new AlertDialog.Builder(activity);
         confirmarExclusao.setTitle("EXCLUIR CONTATO");
         confirmarExclusao.setMessage("Tem certeza de que deseja excluir " + contato.getNome() + "?");
@@ -25,10 +26,18 @@ public class CaixaDeDialogo {
                 dao.excluir(contato);
                 Toast.makeText(activity, contato.getNome() + "  foi excluído(a)!", Toast.LENGTH_SHORT).show();
                 dao.close();
+                confirm = true;
+
             }
         });
-        confirmarExclusao.setNegativeButton("Não", null);
+        confirmarExclusao.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                confirm = false;
+            }
+        });
         confirmarExclusao.create().show();
+        return confirm;
 
     }
 

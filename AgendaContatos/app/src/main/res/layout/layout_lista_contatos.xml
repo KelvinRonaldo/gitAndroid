@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/img_lista_contato"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_user"
+            android:background="@color/colorLightGray"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="54dp"
+            android:layout_marginLeft="4dp"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/txt_lista_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelvin Ronaldo"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:lines="1"
+                />
+            <TextView
+                android:id="@+id/txt_lista_telefone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(11) 4145-6874"
+                android:textSize="15sp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="22dp"
+                />
+            <ImageView
+                android:id="@+id/btn_telefone"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_telefone"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/edit_contato"
+            android:layout_marginTop="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="56dp"
+            android:src="@drawable/ic_editar"
+            />
+
+    </LinearLayout>
+</LinearLayout>
