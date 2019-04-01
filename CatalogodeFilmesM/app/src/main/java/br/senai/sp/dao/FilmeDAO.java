@@ -15,7 +15,7 @@ import br.senai.sp.modelo.Filme;
 public class FilmeDAO extends SQLiteOpenHelper {
 
     public FilmeDAO(Context context) {
-        super(context, "db_filme", null, 1);
+        super(context, "db_filme", null, 3);
     }
 
     @Override
@@ -28,14 +28,17 @@ public class FilmeDAO extends SQLiteOpenHelper {
                 "genero TEXT NOT NULL, " +
                 "data_lancamento TEXT NOT NULL, " +
                 "duracao TEXT NOT NULL, " +
-                "nota INTEGER NOT NULL);";
+                "nota INTEGER NOT NULL," +
+                "foto BLOB)";
 
         db.execSQL(sql);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String sql = "DROP TABLE IF EXISTS tbl_filme";
+        db.execSQL(sql);
+        onCreate(db);
     }
 
     public void salvar(Filme filme) {
@@ -65,6 +68,7 @@ public class FilmeDAO extends SQLiteOpenHelper {
             filme.setDataLancamento(c.getString(c.getColumnIndex("data_lancamento")));
             filme.setDuracao(c.getString(c.getColumnIndex("duracao")));
             filme.setNota(c.getInt(c.getColumnIndex("nota")));
+            filme.setFoto(c.getBlob(c.getColumnIndex("foto")));
             filmes.add(filme);
         }
 
@@ -102,6 +106,7 @@ public class FilmeDAO extends SQLiteOpenHelper {
         dados.put("data_lancamento", filme.getDataLancamento());
         dados.put("duracao", filme.getDuracao());
         dados.put("nota", filme.getNota());
+        dados.put("foto", filme.getFoto());
         return dados;
     }
 

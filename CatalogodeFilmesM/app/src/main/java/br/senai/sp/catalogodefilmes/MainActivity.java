@@ -15,6 +15,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ import br.senai.sp.modelo.Filme;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listaFilmes;
-    private Button btNovoFilme;
+    private ImageButton btNovoFilme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,5 @@
             <solid android:color="@color/ColorRed"/>
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_add">
-    </item>
 
 </layer-list>
