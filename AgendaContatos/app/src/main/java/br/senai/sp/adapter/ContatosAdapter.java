@@ -48,18 +48,26 @@ public class ContatosAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+//        pegando o contato da posicao clicada
         Contato contato = contatos.get(position);
 
+//        inflando o layout na lista
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.layout_lista_contatos, null);
 
+//        atribuido às variaveis as view do layout
         TextView txtNome = view.findViewById(R.id.txt_lista_nome);
         TextView txtTelefone = view.findViewById(R.id.txt_lista_telefone);
-        ImageView imgContato = view.findViewById(R.id.img_lista_contato);
+        ImageView imgListaContato = view.findViewById(R.id.img_lista_contato);
 
+//        colocando as informações do contato no layout
         txtNome.setText(contato.getNome());
         txtTelefone.setText(contato.getTelefone());
-        imgContato.setImageBitmap(Imagem.arrayToBitmap(contato.getFotoContato()));
+
+//        se escolhida uma foto, ela é colocada no imageView da lista
+        if(contato.getFotoContato() != null){
+            imgListaContato.setImageBitmap(Imagem.arrayToBitmap(contato.getFotoContato()));
+        }
 
         return view;
     }

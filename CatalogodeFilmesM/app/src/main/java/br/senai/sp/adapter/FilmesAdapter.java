@@ -47,9 +47,12 @@ public class FilmesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+//        cliando um filme na classe a atrinuindo a ele o filme da posicao clicada da lista
         Filme filme = filmes.get(position);
 
+//        inflando o layout na activity chamada
         LayoutInflater inflater = LayoutInflater.from(context);
+//        inflando o layout criado em uma view
         View view = inflater.inflate(R.layout.layout_lista_filmes, null);
 
         TextView txtTitulo = view.findViewById(R.id.txt_titulo);

@@ -10,4 +10,8 @@ public class Imagem {
 
         return imagemBitmap;
     }
+
+//    public static byte[] imageViewToArray(){
+//
+//    }
 }

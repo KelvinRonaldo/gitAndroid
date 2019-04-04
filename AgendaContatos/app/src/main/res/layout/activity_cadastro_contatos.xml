@@ -13,12 +13,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="158dp">
+            android:layout_height="200dp">
 
             <ImageView
                 android:id="@+id/img_contato"
                 android:layout_width="match_parent"
-                android:layout_height="136dp"
+                android:layout_height="178dp"
                 android:src="@drawable/ic_user"
                 android:layout_centerHorizontal="true"
                 android:background="@color/colorLightGray"/>

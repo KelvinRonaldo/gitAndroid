@@ -37,6 +37,8 @@ public class CadastroActivity extends AppCompatActivity {
     private ImageView imgFilme;
     private String caminhoFoto;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,14 +114,26 @@ public class CadastroActivity extends AppCompatActivity {
                 switch (requestCode){
                     case GALERIA_REQUEST:
                         Log.d("GALERIA", String.valueOf(resultCode));
+
+//                        pegando os bits do dado trazidos pelo clique no botao galeria
                         InputStream inputStream = getContentResolver().openInputStream(data.getData());
+
+//                        transformando bits em bitmap
                         Bitmap bitmapGaleria = BitmapFactory.decodeStream(inputStream);
+
+//                        reduzindo dimensoes do bitmap
                         Bitmap bmGaleriaReduzido = Bitmap.createScaledBitmap(bitmapGaleria, 300, 300, true);
+
+//                        colocando imagem bitmap na image view da activity
                         imgFilme.setImageBitmap(bmGaleriaReduzido);
+
                         break;
                     case CAMERA_REQUEST:
+//                        transformando File em bitmap
                         Bitmap bitmapCamera = BitmapFactory.decodeFile(caminhoFoto);
+//                        reduzindo dimensoes do bitmap
                         Bitmap bmCameraReduzido = Bitmap.createScaledBitmap(bitmapCamera, 300, 300, true);
+//                        colocando imagem bitmap na image view da activity
                         imgFilme.setImageBitmap(bmCameraReduzido);
                         break;
                 }

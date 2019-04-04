@@ -32,7 +32,7 @@ public class CadastroContatoHelper {
         txtTelefone = activity.findViewById(R.id.txt_telefone);
         txtEmail = activity.findViewById(R.id.txt_email);
         txtLinkedin = activity.findViewById(R.id.txt_linkedin);
-        imgContato = activity.findViewById(R.id.img_lista_contato);
+        imgContato = activity.findViewById(R.id.img_contato);
 
         layoutNome =  activity.findViewById(R.id.layout_txt_nome);
         layoutEndereco =  activity.findViewById(R.id.layout_txt_endereco);
@@ -60,7 +60,11 @@ public class CadastroContatoHelper {
         txtTelefone.setText(contato.getTelefone());
         txtEmail.setText(contato.getEmail());
         txtLinkedin.setText(contato.getLinkedin());
-        imgContato.setImageBitmap(Imagem.arrayToBitmap(contato.getFotoContato()));
+
+        if(contato.getFotoContato() != null) {
+            imgContato.setImageBitmap(Imagem.arrayToBitmap(contato.getFotoContato()));
+        }
+
         this.contato = contato;
     }
 
