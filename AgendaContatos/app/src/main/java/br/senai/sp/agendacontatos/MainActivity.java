@@ -53,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        listaContatos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Contato contato = (Contato) listaContatos.getItemAtPosition(position);
-                Intent abrirCadastro = new Intent(MainActivity.this, CadastroContatos.class);
-                abrirCadastro.putExtra("contato", contato);
-                startActivity(abrirCadastro);
-            }
-        });
+//        listaContatos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Contato contato = (Contato) listaContatos.getItemAtPosition(position);
+//                Intent abrirCadastro = new Intent(MainActivity.this, CadastroContatos.class);
+//                abrirCadastro.putExtra("contato", contato);
+//                startActivity(abrirCadastro);
+//            }
+//        });
 
 //        ArrayAdapter<String> listaContatosAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contatos);
 //
