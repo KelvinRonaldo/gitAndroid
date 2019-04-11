@@ -84,7 +84,7 @@ public class ContatosAdapter extends BaseAdapter{
             }
         });
 
-        
+
         txtTelefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
