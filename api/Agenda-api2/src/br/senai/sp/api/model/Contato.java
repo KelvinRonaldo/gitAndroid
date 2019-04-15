@@ -1,4 +1,4 @@
-package br.senai.sp.model;
+package br.senai.sp.api.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +15,11 @@ public class Contato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	// Dizendo para o Spring esta campo é gerado automaticamente(IDENTITY)
 	private Long id;
 	private String nome;
+	private String endereco;
 	private String email;
 	private String telefone;
+	private String linkedin;
+	private String foto;
 
 
 	public Long getId() {
@@ -47,15 +50,37 @@ public class Contato {
 		return telefone;
 	}
 
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
 	@Override
 	public String toString() {
-		return "Contato [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + "]";
+		return "Contato [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", email=" + email + ", telefone="
+				+ telefone + ", linkedin=" + linkedin + ", foto=" + foto + "]";
 	}
-	
-	
-
 }

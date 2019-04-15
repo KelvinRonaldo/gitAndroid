@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/br/senai/sp/model/Contato.java=UTF-8
+encoding//src/br/senai/sp/api/model/Contato.java=UTF-8
+encoding//src/br/senai/sp/api/repository/ContatoRepository.java=UTF-8
+encoding//src/br/senai/sp/api/resource/ContatoResource.java=UTF-8
