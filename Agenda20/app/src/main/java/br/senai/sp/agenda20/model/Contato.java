@@ -1,6 +1,8 @@
 package br.senai.sp.agenda20.model;
 
-public class Contato {
+import java.io.Serializable;
+
+public class Contato implements Serializable{
 
     private int id;
     private String nome;

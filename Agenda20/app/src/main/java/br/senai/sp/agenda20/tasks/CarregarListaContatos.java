@@ -36,12 +36,13 @@ public class CarregarListaContatos extends AsyncTask {
     }
 
     //    ESTE MÉTODO É O TERCEIRO A SER EXECUTADO
+//    MÉTODO OBRIGATORIO EM CLASS QUE HERDAM A CLASSE ASYNC TAKS
     @Override
     protected Object doInBackground(Object[] objects) {
 
         try {
 //            DETERMINAR A URL DO RECURSO A SER UTILIZADO NO WEBSERVICE
-            URL url = new URL("http://10.107.134.8:8080/contatos");
+            URL url = new URL("http://10.107.144.27:8080/contatos");
 
 //            CRIAR CONEXÃO HTTP COM O WEBSERVICE
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();

@@ -1,12 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CadastroContato">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CadastroContato"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/img_cadastro"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/colorLightGray"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_contato"/>
+            <!--<ImageButton-->
+                <!--android:layout_width="56dp"-->
+                <!--android:layout_height="56dp"-->
+                <!--/>-->
+
+        </RelativeLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="15px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome:"/>
+            <EditText
+                android:id="@+id/txt_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o nome do contato..."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail:"/>
+            <EditText
+                android:id="@+id/txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o e-mail do contato..."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endereco:"/>
+            <EditText
+                android:id="@+id/txt_endereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o endereco do contato..."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone:"/>
+            <EditText
+                android:id="@+id/txt_telefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o telefone do contato..."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LinkedIn:"/>
+            <EditText
+                android:id="@+id/txt_linkedin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o linkedin do contato..."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Foto:"/>
+            <EditText
+                android:id="@+id/txt_foto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o foto do contato..."/>
 
 
-</LinearLayout>
+            <Button
+                android:id="@+id/btn_novo_contato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SALVAR"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

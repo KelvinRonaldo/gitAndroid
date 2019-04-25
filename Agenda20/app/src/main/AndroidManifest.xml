@@ -18,7 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroContato"></activity>
+        <activity android:name=".CadastroContato">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity">
+
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>
