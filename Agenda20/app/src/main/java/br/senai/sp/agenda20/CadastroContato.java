@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import br.senai.sp.agenda20.model.Contato;
+import br.senai.sp.agenda20.tasks.AtualizarContato;
 import br.senai.sp.agenda20.tasks.GravarContato;
 
 public class CadastroContato extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class CadastroContato extends AppCompatActivity {
     private Contato contato;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_contato);
 
@@ -40,25 +41,9 @@ public class CadastroContato extends AppCompatActivity {
 
 
 
-        btnGravar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Contato contato = new Contato();
-                contato.setNome(txtNome.getText().toString());
-                contato.setEmail(txtEmail.getText().toString());
-                contato.setEndereço(txtEndereco.getText().toString());
-                contato.setTelefone(txtTelefone.getText().toString());
-                contato.setLinkedin(txtLinkedin.getText().toString());
-                contato.setFoto(txtFoto.getText().toString());
-
-                GravarContato gravarContato = new GravarContato(contato);
-                gravarContato.execute();
-            }
-        });
-
 
         Intent intent = getIntent();
-        Contato contato = (Contato) intent.getSerializableExtra("contato");
+        contato = (Contato) intent.getSerializableExtra("contato");
 
         if(contato != null){
             this.contato = contato;
@@ -69,8 +54,32 @@ public class CadastroContato extends AppCompatActivity {
             txtLinkedin.setText(contato.getLinkedin().toString());
             txtFoto.setText(contato.getFoto().toString());
         }else{
-            Toast.makeText(this, "Nulo", Toast.LENGTH_SHORT).show();
+            contato = new Contato();
         }
+
+        btnGravar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contato.setNome(txtNome.getText().toString());
+                contato.setEmail(txtEmail.getText().toString());
+                contato.setEndereço(txtEndereco.getText().toString());
+                contato.setTelefone(txtTelefone.getText().toString());
+                contato.setLinkedin(txtLinkedin.getText().toString());
+                contato.setFoto(txtFoto.getText().toString());
+
+                if(contato.getId() == 0){
+                    GravarContato gravarContato = new GravarContato(contato);
+                    gravarContato.execute();
+                    Toast.makeText(CadastroContato.this, "Gravado", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                    AtualizarContato atualizarContato = new AtualizarContato(contato);
+                    atualizarContato.execute();
+                    Toast.makeText(CadastroContato.this, "Atualizado", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
 
 
     }

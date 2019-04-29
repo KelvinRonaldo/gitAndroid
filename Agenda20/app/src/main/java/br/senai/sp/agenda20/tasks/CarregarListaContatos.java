@@ -42,7 +42,7 @@ public class CarregarListaContatos extends AsyncTask {
 
         try {
 //            DETERMINAR A URL DO RECURSO A SER UTILIZADO NO WEBSERVICE
-            URL url = new URL("http://10.107.144.27:8080/contatos");
+            URL url = new URL("http://10.107.134.8:8080/contatos");
 
 //            CRIAR CONEXÃO HTTP COM O WEBSERVICE
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();

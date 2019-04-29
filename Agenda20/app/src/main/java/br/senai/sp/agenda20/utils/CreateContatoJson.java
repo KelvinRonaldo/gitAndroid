@@ -12,11 +12,14 @@ public class CreateContatoJson {
     public CreateContatoJson(Contato contato) {
         this.contato = contato;
     }
-    public JSONStringer criarJson(){
+    public JSONStringer criarJson(String modo){
         JSONStringer jsonContato = new JSONStringer();
 
         try {
             jsonContato.object(); //INICIANDO O JSON = '{'
+            if(modo.equals("atualizar")){
+                jsonContato.key("id").value(contato.getId());
+            }
             jsonContato.key("nome").value(contato.getNome());
             jsonContato.key("email").value(contato.getEmail());
             jsonContato.key("endereco").value(contato.getEndereço());

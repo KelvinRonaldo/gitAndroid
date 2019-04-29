@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 import br.senai.sp.agenda20.model.Contato;
+import br.senai.sp.agenda20.utils.CreateContatoJson;
 
 public class GravarContato extends AsyncTask {
 
@@ -28,22 +29,22 @@ public class GravarContato extends AsyncTask {
     @Override
     protected Object doInBackground(Object[] objects) {
 
-        JSONStringer jsonContato = new JSONStringer();
+//        JSONStringer jsonContato = new JSONStringer();
         try {
-            jsonContato.object(); //INICIANDO O JSON = '{'
-            jsonContato.key("nome").value(contato.getNome());
-            jsonContato.key("email").value(contato.getEmail());
-            jsonContato.key("endereco").value(contato.getEndereço());
-            jsonContato.key("telefone").value(contato.getTelefone());
-            jsonContato.key("linkedin").value(contato.getLinkedin());
-            jsonContato.key("foto").value(contato.getFoto());
-            jsonContato.endObject(); //FINALIZA O JSON = '}'
+//            jsonContato.object(); //INICIANDO O JSON = '{'
+//            jsonContato.key("nome").value(contato.getNome());
+//            jsonContato.key("email").value(contato.getEmail());
+//            jsonContato.key("endereco").value(contato.getEndereço());
+//            jsonContato.key("telefone").value(contato.getTelefone());
+//            jsonContato.key("linkedin").value(contato.getLinkedin());
+//            jsonContato.key("foto").value(contato.getFoto());
+//            jsonContato.endObject(); //FINALIZA O JSON = '}'
 
-//            CreateContatoJson jsonContato = new CreateContatoJson(contato);
-//            jsonContato.criarJson();
+            CreateContatoJson jsContato = new CreateContatoJson(contato);
+            JSONStringer jsonContato = jsContato.criarJson("gravar");
 
 
-            URL url = new URL("http://10.107.144.27:8080/contatos");
+            URL url = new URL("http://10.107.134.8:8080/contatos");
 //            CRIANDO CONEXAO PARA A URL
             HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
 
@@ -69,8 +70,8 @@ public class GravarContato extends AsyncTask {
             Scanner scanner = new Scanner(conexao.getInputStream());
             String resposta = scanner.nextLine();
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
